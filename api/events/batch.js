@@ -1,5 +1,5 @@
 // Batch events endpoint for Vercel Serverless Function
-import { Pool } from 'pg';
+const { Pool } = require('pg');
 
 let pool;
 
@@ -15,7 +15,7 @@ function getPool() {
   return pool;
 }
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   // Enable CORS for Tauri app
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');

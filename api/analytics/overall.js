@@ -1,5 +1,5 @@
 // Overall analytics endpoint for Vercel Serverless Function
-import { Pool } from 'pg';
+const { Pool } = require('pg');
 
 // Create a connection pool (Vercel will reuse across warm starts)
 let pool;
@@ -16,7 +16,7 @@ function getPool() {
   return pool;
 }
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
